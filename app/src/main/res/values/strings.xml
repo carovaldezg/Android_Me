@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Android_Me</string>
     <string name="next_button">Next</string>
+    <string name="instructions">Choose one head style, one body style and one legs style, then click the button to see your customized Android!</string>
 </resources>
