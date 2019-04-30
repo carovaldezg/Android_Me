@@ -16,7 +16,7 @@
 
 package com.example.android.android_me.ui;
 
-import android.app.FragmentManager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -29,22 +29,26 @@ public class AndroidMeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_android_me);
 
         if (savedInstanceState == null) {
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
 
             BodyPartFragment headsFragment = new BodyPartFragment();
             headsFragment.setImageIds(AndroidImageAssets.getHeads());
-            headsFragment.setListIndex(1);
+            int headIndex = getIntent().getIntExtra("headIndex", 0);
+            headsFragment.setListIndex(headIndex);
 
             BodyPartFragment bodyFragment = new BodyPartFragment();
             bodyFragment.setImageIds(AndroidImageAssets.getBodies());
-            bodyFragment.setListIndex(1);
+            int bodyIndex = getIntent().getIntExtra("bodyIndex", 0);
+            bodyFragment.setListIndex(bodyIndex);
 
             BodyPartFragment legsFragment = new BodyPartFragment();
             legsFragment.setImageIds(AndroidImageAssets.getLegs());
-            legsFragment.setListIndex(1);
+            int legsIndex = getIntent().getIntExtra("legsIndex", 0);
+            legsFragment.setListIndex(headIndex);
 
             fragmentManager.beginTransaction().add(R.id.head_container, headsFragment).commit();
             fragmentManager.beginTransaction().add(R.id.body_container, bodyFragment).commit();
